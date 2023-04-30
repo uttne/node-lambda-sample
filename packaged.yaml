@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Sample Application
+Resources:
+  MyLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3://node-lambda-sample-uttne/dd82f7a10b20779b9c3c859d25363713
+      Handler: index.handler
+      Runtime: nodejs18.x
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /your-endpoint
+            Method: get
+    Metadata:
+      SamResourceId: MyLambdaFunction

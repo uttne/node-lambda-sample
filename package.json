@@ -1,0 +1,22 @@
+{
+  "name": "node-lambda-sample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/uttne/node-lambda-sample.git",
+  "author": "uttne <uttne.mkr@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.114",
+    "@types/aws-sdk": "^2.7.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "aws-lambda": "^1.0.7",
+    "aws-sdk": "^2.1368.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "package": "sam package --output-template-file packaged.yaml --s3-bucket node-lambda-sample-uttne --region ap-northeast-1",
+    "deploy": "sam deploy --template-file packaged.yaml --stack-name node-lambda-sample-stack --capabilities CAPABILITY_IAM --region ap-northeast-1"
+  }
+}
