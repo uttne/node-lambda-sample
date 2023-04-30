@@ -13,5 +13,5 @@ Resources:
                 ApiEvent:
                     Type: Api
                     Properties:
-                        Path: /your-endpoint
+                        Path: /api
                         Method: get

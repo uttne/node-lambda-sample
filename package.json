@@ -17,6 +17,7 @@
   "scripts": {
     "build": "tsc",
     "package": "sam package --output-template-file packaged.yaml --s3-bucket node-lambda-sample-uttne --region ap-northeast-1",
-    "deploy": "sam deploy --template-file packaged.yaml --stack-name node-lambda-sample-stack --capabilities CAPABILITY_IAM --region ap-northeast-1"
+    "deploy": "sam deploy --template-file packaged.yaml --stack-name node-lambda-sample-stack --capabilities CAPABILITY_IAM --region ap-northeast-1",
+    "delete": "sam delete --stack-name node-lambda-sample-stack --region ap-northeast-1"
   }
 }

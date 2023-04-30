@@ -99,7 +99,7 @@ Resources:
                 ApiEvent:
                     Type: Api
                     Properties:
-                        Path: /your-endpoint
+                        Path: /api
                         Method: get
 ```
 
@@ -118,4 +118,31 @@ S3 のバケットを作成する。
 
 ```bash
 aws s3 mb s3://node-lambda-sample-uttne --region ap-northeast-1
+```
+
+デプロイする
+
+```bash
+yarn package
+yarn deploy
+```
+
+## ローカルでテストする
+
+```bash
+sam local start-api
+```
+
+```bash
+curl http://127.0.0.1:3000/api
+```
+
+## 削除する
+
+以下のスクリプトを追加する
+
+```json
+    "scripts": {
+        "delete": "sam delete --stack-name node-lambda-sample-stack --region ap-northeast-1"
+    }
 ```

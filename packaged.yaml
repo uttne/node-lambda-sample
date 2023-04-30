@@ -5,14 +5,14 @@ Resources:
   MyLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://node-lambda-sample-uttne/dd82f7a10b20779b9c3c859d25363713
+      CodeUri: s3://node-lambda-sample-uttne/a66c19724c597074052aed6de7be7efc
       Handler: index.handler
       Runtime: nodejs18.x
       Events:
         ApiEvent:
           Type: Api
           Properties:
-            Path: /your-endpoint
+            Path: /api
             Method: get
     Metadata:
       SamResourceId: MyLambdaFunction
