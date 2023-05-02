@@ -19,7 +19,7 @@ Resources:
   MyLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://node-lambda-sample-uttne/872f84056c3716c4fbe35f098aeaad8a
+      CodeUri: s3://node-lambda-sample-uttne/de90ba135831a7cafb1d9edbb650adda
       Handler: index.handler
       Runtime: nodejs18.x
       Layers:

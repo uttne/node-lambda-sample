@@ -56,12 +56,13 @@ async function uploadFileToS3(bucketName: string, key: string, file: string) {
 }
 
 export const handler: APIGatewayProxyHandler = async (event, _context) => {
-    const dbPath = "/tmp/test.db";
+    const dbName = "test.db";
+    const dbPath = `/tmp/${dbName}`;
 
     const bucketName: string = process.env.BUCKET_NAME as string;
 
     try {
-        await downloadFileFromS3(bucketName, "test.db", dbPath);
+        await downloadFileFromS3(bucketName, dbName, dbPath);
     } catch (e) {
         console.log(e);
     }
@@ -96,7 +97,7 @@ export const handler: APIGatewayProxyHandler = async (event, _context) => {
 
     db.close();
 
-    await uploadFileToS3(bucketName, "test.db", dbPath);
+    await uploadFileToS3(bucketName, dbName, dbPath);
 
     return {
         statusCode: 200,
