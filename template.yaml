@@ -3,6 +3,8 @@ Transform: AWS::Serverless-2016-10-31
 Description: Sample Application
 
 Resources:
+    DatabaseBucket:
+        Type: AWS::S3::Bucket
     BetterSqlite3Layer:
         Type: AWS::Serverless::LayerVersion
         Properties:
@@ -19,6 +21,12 @@ Resources:
             Runtime: nodejs18.x
             Layers:
                 - !Ref BetterSqlite3Layer
+            Policies:
+                - S3CrudPolicy:
+                      BucketName: !Ref DatabaseBucket
+            Environment:
+                Variables:
+                    BUCKET_NAME: !Ref DatabaseBucket
             Events:
                 ApiEvent:
                     Type: Api

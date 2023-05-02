@@ -6,7 +6,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    // モジュールの解決方法を指定する AWS SDK for JavaScript v3 のような外部依存あｋン系を使用する場合は
+    // Node.js のモジュール解決アルゴリズムを使用する必要があるので必須の設定
+    "moduleResolution": "node"
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/*.spec.ts"]

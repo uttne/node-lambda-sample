@@ -2,6 +2,10 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Sample Application
 Resources:
+  DatabaseBucket:
+    Type: AWS::S3::Bucket
+    Metadata:
+      SamResourceId: DatabaseBucket
   BetterSqlite3Layer:
     Type: AWS::Serverless::LayerVersion
     Properties:
@@ -15,11 +19,19 @@ Resources:
   MyLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://node-lambda-sample-uttne/3d8b8d554edcd2333c4e376621e190e8
+      CodeUri: s3://node-lambda-sample-uttne/872f84056c3716c4fbe35f098aeaad8a
       Handler: index.handler
       Runtime: nodejs18.x
       Layers:
       - Ref: BetterSqlite3Layer
+      Policies:
+      - S3CrudPolicy:
+          BucketName:
+            Ref: DatabaseBucket
+      Environment:
+        Variables:
+          BUCKET_NAME:
+            Ref: DatabaseBucket
       Events:
         ApiEvent:
           Type: Api

@@ -6,6 +6,7 @@
   "author": "uttne <uttne.mkr@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.321.1",
     "@types/aws-lambda": "^8.10.114",
     "@types/aws-sdk": "^2.7.0",
     "@types/better-sqlite3": "^7.6.4",
