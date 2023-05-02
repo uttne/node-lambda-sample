@@ -1,3 +1,5 @@
+# 通常の Lambda & API Gateway のデプロイまでの流れ
+
 ## 初期化
 
 ```bash
@@ -145,4 +147,18 @@ curl http://127.0.0.1:3000/api
     "scripts": {
         "delete": "sam delete --stack-name node-lambda-sample-stack --region ap-northeast-1"
     }
+```
+
+# AWS Lambda で better-sqlite3 を使う
+
+現在の nodejs 18 ランタイムで better-sqlite3 を使おうとすると以下のようなエラーが発生するので、 Lambda 用にビルドをする必要がある。
+
+```
+/lib64/libm.so.6: version `GLIBC_2.29' not found
+```
+
+ビルド
+
+```bash
+yarn build
 ```

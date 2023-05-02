@@ -8,14 +8,17 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.114",
     "@types/aws-sdk": "^2.7.0",
+    "@types/better-sqlite3": "^7.6.4",
+    "esbuild": "^0.17.18",
     "typescript": "^5.0.4"
   },
   "dependencies": {
     "aws-lambda": "^1.0.7",
-    "aws-sdk": "^2.1368.0"
+    "aws-sdk": "^2.1368.0",
+    "better-sqlite3": "^8.3.0"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "node ./build-func.mjs && pwsh ./build-layer.ps1",
     "package": "sam package --output-template-file packaged.yaml --s3-bucket node-lambda-sample-uttne --region ap-northeast-1",
     "deploy": "sam deploy --template-file packaged.yaml --stack-name node-lambda-sample-stack --capabilities CAPABILITY_IAM --region ap-northeast-1",
     "delete": "sam delete --stack-name node-lambda-sample-stack --region ap-northeast-1"

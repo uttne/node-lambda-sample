@@ -2,12 +2,24 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Sample Application
 Resources:
+  BetterSqlite3Layer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: better-sqlite3-layer
+      Description: better-sqlite3 layer
+      ContentUri: s3://node-lambda-sample-uttne/5047e995075fd9364059d70a6c387bf9
+      CompatibleRuntimes:
+      - nodejs18.x
+    Metadata:
+      SamResourceId: BetterSqlite3Layer
   MyLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://node-lambda-sample-uttne/a66c19724c597074052aed6de7be7efc
+      CodeUri: s3://node-lambda-sample-uttne/3d8b8d554edcd2333c4e376621e190e8
       Handler: index.handler
       Runtime: nodejs18.x
+      Layers:
+      - Ref: BetterSqlite3Layer
       Events:
         ApiEvent:
           Type: Api
